@@ -1,7 +1,5 @@
 import type { Config } from "drizzle-kit";
 
-import { env } from "@/env.mjs";
-
 import "dotenv/config";
 
 export default {
@@ -9,6 +7,6 @@ export default {
   out: "db/migrations",
   driver: "pg",
   dbCredentials: {
-    connectionString: env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL || "",
   },
 } satisfies Config;

@@ -1,7 +1,7 @@
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 
 import { db } from "@/db";
-import { publicProcedure, router } from "@/server/root";
+import { publicProcedure, router } from "@/server/trpc";
 
 migrate(db, { migrationsFolder: "db/migrations" }).catch((err) =>
   console.log(err),

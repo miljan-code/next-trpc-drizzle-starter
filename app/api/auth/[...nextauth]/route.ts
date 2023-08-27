@@ -5,12 +5,12 @@ import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/db";
 import { env } from "@/env.mjs";
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   adapter: DrizzleAdapter(db),
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/",
   },
