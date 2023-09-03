@@ -1,4 +1,8 @@
-import { initTRPC, type inferAsyncReturnType } from "@trpc/server";
+import {
+  initTRPC,
+  type DataTransformerOptions,
+  type inferAsyncReturnType,
+} from "@trpc/server";
 import { getServerSession } from "next-auth";
 import superjson from "superjson";
 
@@ -16,7 +20,9 @@ export const createContext = async () => {
 
 export type Context = inferAsyncReturnType<typeof createContext>;
 
-const t = initTRPC.context<Context>().create({ transformer: superjson });
+const t = initTRPC
+  .context<Context>()
+  .create({ transformer: superjson as DataTransformerOptions });
 
 export const router = t.router;
 export const publicProcedure = t.procedure;
