@@ -3,14 +3,15 @@ import {
   type DataTransformerOptions,
   type inferAsyncReturnType,
 } from "@trpc/server";
-import { getServerSession } from "next-auth";
+import type { Session } from "next-auth";
+import NextAuth from "next-auth/next";
 import superjson from "superjson";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { db } from "@/db";
 
 export const createContext = async () => {
-  const session = await getServerSession(authOptions);
+  const session = (await NextAuth(authOptions)) as Session;
 
   return {
     session,
