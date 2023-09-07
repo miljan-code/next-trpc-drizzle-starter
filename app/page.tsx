@@ -3,7 +3,7 @@ import Image from "next/image";
 import { server } from "@/lib/trpc/server";
 
 export default async function Home() {
-  const string = await server.getString();
+  const string = await server.example.getExample.query();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
