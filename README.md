@@ -7,6 +7,7 @@ Opinionated NextJS 13.4 (App Router) template that contains everything you need 
 - TypeScript
 - tRPC
 - Drizzle ORM
+- Supabase
 - NextAuth
 - T3 Env
 - ESLint
@@ -33,7 +34,7 @@ Add environment variables
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET=""
 
-DATABASE_URL="postgresql://[username]:[password]@host/postgres"
+DATABASE_URL="postgresql://[username]:[password]@host/postgres" - Supabase
 
 GOOGLE_CLIENT_ID=""
 GOOGLE_CLIENT_SECRET=""
