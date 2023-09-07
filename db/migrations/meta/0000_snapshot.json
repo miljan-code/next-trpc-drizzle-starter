@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "a359fa5a-9c49-41a6-9da4-6b5290b99c72",
+  "id": "532af05d-2f84-4d3e-9ca1-b31da512ca4c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account": {
@@ -26,8 +26,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "provider_account_id": {
-          "name": "provider_account_id",
+        "providerAccountId": {
+          "name": "providerAccountId",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -92,11 +92,11 @@
         }
       },
       "compositePrimaryKeys": {
-        "account_provider_provider_account_id": {
-          "name": "account_provider_provider_account_id",
+        "account_provider_providerAccountId": {
+          "name": "account_provider_providerAccountId",
           "columns": [
             "provider",
-            "provider_account_id"
+            "providerAccountId"
           ]
         }
       },
@@ -106,8 +106,8 @@
       "name": "session",
       "schema": "",
       "columns": {
-        "session_token": {
-          "name": "session_token",
+        "sessionToken": {
+          "name": "sessionToken",
           "type": "text",
           "primaryKey": true,
           "notNull": true
@@ -166,8 +166,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "email_verified": {
-          "name": "email_verified",
+        "emailVerified": {
+          "name": "emailVerified",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": false

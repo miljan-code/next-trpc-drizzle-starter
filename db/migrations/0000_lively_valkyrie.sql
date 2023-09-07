@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS "account" (
 	"userId" text NOT NULL,
 	"type" text NOT NULL,
 	"provider" text NOT NULL,
-	"provider_account_id" text NOT NULL,
+	"providerAccountId" text NOT NULL,
 	"refresh_token" text,
 	"access_token" text,
 	"expires_at" integer,
@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS "account" (
 	"scope" text,
 	"id_token" text,
 	"session_state" text,
-	CONSTRAINT account_provider_provider_account_id PRIMARY KEY("provider","provider_account_id")
+	CONSTRAINT account_provider_providerAccountId PRIMARY KEY("provider","providerAccountId")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "session" (
-	"session_token" text PRIMARY KEY NOT NULL,
+	"sessionToken" text PRIMARY KEY NOT NULL,
 	"user_id" text NOT NULL,
 	"expires" timestamp NOT NULL
 );
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"id" text PRIMARY KEY NOT NULL,
 	"name" text,
 	"email" text NOT NULL,
-	"email_verified" timestamp,
+	"emailVerified" timestamp,
 	"image" text,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
