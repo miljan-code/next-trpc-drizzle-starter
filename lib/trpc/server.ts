@@ -5,7 +5,7 @@ import { experimental_createTRPCNextAppDirServer as createTRPCNextAppDirServer }
 import SuperJSON from "superjson";
 
 import { db } from "@/db";
-import { getUserAuth } from "@/lib/auth";
+import { getUserSession } from "@/lib/auth";
 import { appRouter } from "@/server";
 
 export const server = createTRPCNextAppDirServer<typeof appRouter>({
@@ -20,7 +20,7 @@ export const server = createTRPCNextAppDirServer<typeof appRouter>({
           revalidate: 1,
           router: appRouter,
           async createContext() {
-            const { session } = await getUserAuth();
+            const { session } = await getUserSession();
             return {
               session,
               db,

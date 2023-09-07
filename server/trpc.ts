@@ -8,10 +8,10 @@ import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import superjson from "superjson";
 
 import { db } from "@/db";
-import { getUserAuth } from "@/lib/auth";
+import { getUserSession } from "@/lib/auth";
 
 export const createContext = async (opts?: FetchCreateContextFnOptions) => {
-  const { session } = await getUserAuth();
+  const { session } = await getUserSession();
 
   return {
     session,
@@ -26,9 +26,6 @@ const t = initTRPC
   .context<Context>()
   .create({ transformer: superjson as DataTransformerOptions });
 
-export const router = t.router;
-export const publicProcedure = t.procedure;
-
 const isAuthed = t.middleware((opts) => {
   const { ctx } = opts;
   if (!ctx.session) {
@@ -41,4 +38,6 @@ const isAuthed = t.middleware((opts) => {
   });
 });
 
+export const router = t.router;
+export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(isAuthed);
