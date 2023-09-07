@@ -1,28 +1,21 @@
 import { SignIn, SignOut } from "@/components/auth";
 import { getUserSession } from "@/lib/auth";
-import { server } from "@/lib/trpc/server";
 
 export default async function Home() {
   const { session } = await getUserSession();
 
-  const string = await server.example.getExample.query();
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          <code className="font-mono font-bold">{string}</code>
-        </p>
+    <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-r from-indigo-800 to-indigo-600 p-24 text-white">
+      <div className="flex flex-col">
+        <h1 className="text-center text-5xl font-bold">NextJS Starter Kit</h1>
       </div>
-
-      <div className="">Heading</div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        Features
+      <div className="flex flex-col gap-2 text-center">
+        <h3 className="text-4xl font-bold">tRPC</h3>
+        <h3 className="text-4xl font-bold">Drizzle ORM</h3>
+        <h3 className="text-4xl font-bold">NextAuth</h3>
+        <h3 className="text-4xl font-bold">Tailwind/ShadCN</h3>
       </div>
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        {session ? <SignOut /> : <SignIn />}
-      </div>
+      <div className="">{session ? <SignOut /> : <SignIn />}</div>
     </main>
   );
 }
